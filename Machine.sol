@@ -13,7 +13,7 @@ contract Machine is ERC721, Ownable {
     constructor() ERC721("Machine", "Mch") {}
 
     function safeMint(address to) public onlyOwner {
-        require(balanceOf(msg.sender) == 0, "you already have a machine");
+        require(balanceOf(to) == 0, "you already have a machine");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
