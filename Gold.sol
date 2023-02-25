@@ -12,8 +12,7 @@ contract Gold is ERC20, ERC20Burnable, Ownable {
         _mint(to, amount);
     }
 
-    function burnFrom(address account, uint256 amount) public override onlyOwner {
-        _burn(account, amount);
+    function burn(address _to, uint256 amount) public virtual {
+        _burn(_to, amount);
     }
-
 }
