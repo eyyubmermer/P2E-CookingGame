@@ -92,7 +92,7 @@ contract Game {
     }
 
     function takeSandwich() public {
-        require( players[msg.sender].stakeTime + 30 seconds >= block.timestamp, "sandwich is not ready");
+        require(block.timestamp >= players[msg.sender].stakeTime + 30 seconds, "sandwich is not ready");
 
         items.mint(msg.sender, 3, 1, "");
 
@@ -101,7 +101,7 @@ contract Game {
     }
 
     function milkCow(uint _id) public {
-        require( cow.viewMilkingTime(_id) + 6 hours >= block.timestamp );
+        require(block.timestamp  >=  cow.viewMilkingTime(_id) + 6 hours);
         require( cow.ownerOf(_id) == msg.sender);
         cow.setMilkingTime(_id, block.timestamp);
 
